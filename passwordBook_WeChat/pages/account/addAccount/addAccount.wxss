@@ -6,6 +6,7 @@
 
 .existCategory {
   align-items: center;
+  display: flex;
   flex-direction: row;
   width: 100%;
 }
@@ -48,9 +49,11 @@
   color: #1e82d2;
   padding-right: 0rpx;
 }
-.info{
+
+.info {
   margin-top: 40rpx;
 }
+
 .input-info {
   margin-top: 5rpx;
   display: flex;

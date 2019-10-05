@@ -2,8 +2,8 @@
 <view class="container">
   <view class="category">
     <view class="existCategory">
-      <label>category:</label>
-      <picker class="add-picker" mode="selector" value="{{pickerindex}}" range="{{accountCategoryList}}" bindchange="bindPickerChange" bindtap="bindPickerTap">选择账户种类</picker>
+      <label>请选择账户种类:</label>
+      <picker class="add-picker" mode="selector" value="{{pickerindex}}" range="{{accountCategoryList}}" bindchange="bindPickerChange" bindtap="bindPickerTap">{{currentCategory}}</picker>
       <!-- <button class="select-category" bindtap="selectCategorySheet" type="default">选择账户种类</button> -->
     </view>
     <button class="add-category" bindtap="showAddView">新增账户种类</button>
