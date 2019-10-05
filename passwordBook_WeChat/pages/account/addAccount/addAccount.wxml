@@ -1,0 +1,35 @@
+<!--pages/account/addAccount/addAccount.wxml-->
+<view class="container">
+  <view class="category">
+    <view class="existCategory">
+      <label>category:</label>
+      <picker class="add-picker" mode="selector" value="{{pickerindex}}" range="{{accountCategoryList}}" bindchange="bindPickerChange" bindtap="bindPickerTap">选择账户种类</picker>
+      <!-- <button class="select-category" bindtap="selectCategorySheet" type="default">选择账户种类</button> -->
+    </view>
+    <button class="add-category" bindtap="showAddView">新增账户种类</button>
+    <view class="newCategory" hidden="{{hiddenName}}">
+      <input class="input-category" placeholder="请输入需要添加的新种类" bindinput="bindCategoryInput"></input>
+      <button class="ensure-category" type="primary" bindtap="addCategorySheet">添加</button>
+    </view>
+
+  </view>
+  <view class="info">
+    <view class="input-info">
+      <label>username:</label>
+      <input class="input-username" placeholder="请输入用户名" focus="true" bindinput="bindUsernameInput"></input>
+
+    </view>
+    <view class="input-info">
+      <label>password:</label>
+      <input class="input-password" placeholder="请输入密码" focus="true" bindinput="bindPasswordInput"></input>
+    </view>
+    <view class="input-info">
+      <label>note:</label>
+      <input class="input-note" placeholder="备注" focus="true" bindinput="bindNoteInput"></input>
+    </view>
+  </view>
+  <view class="last-buttons">
+    <button class="ensure-add" bindtap="ensureAdd" type="primary">确定</button>
+    <button class="cancel-add" bindtap="cancelAdd" type="warn">取消</button>
+  </view>
+</view>

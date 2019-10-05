@@ -1,0 +1,67 @@
+/* pages/account/deleteAccount/deleteAccount.wxss */
+
+.title{
+  margin: 20rpx 20rpx 1rpx;
+  border: 8rpx solid gainsboro;
+
+}
+.table {
+  margin: 1rpx 20rpx 10rpx;
+  border: 1px solid darkgray;
+  overflow: scroll;
+}
+
+.tr {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  /* height: 3rem; */
+  align-items: center;
+}
+
+.td {
+  width: 40%;
+  justify-content: center;
+  text-align: center;
+}
+
+.td-ckeck {
+  width: 10%;
+  justify-content: center;
+  text-align: center;
+}
+
+.bg-w {
+  background: rgba(87, 137, 231, 0.514);
+}
+
+.bg-g {
+  background: #e6f3f9;
+}
+
+.th {
+  width: 4rem;
+  justify-content: center;
+  /* background: rgba(87, 137, 231, 0.514); */
+  color: #fff;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+}
+.th-check{
+  width: 1px;
+  justify-content: center;
+  /* background: rgba(87, 137, 231, 0.514); */
+  color: #fff;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+}
+.category-view {
+  overflow: scroll;
+  width: 100%;
+}
+.buttons{
+  display: flex;
+  flex-direction: row;
+}

@@ -1,0 +1,63 @@
+<!--pages/account/modifyAccount/deleteAccount.wxml-->
+<view class="container">
+  <!-- 种类列表模板 begin -->
+  <template name="category">
+
+    <view class="category-view" bindtap="showTable" data-id="{{cateid}}">
+      <!-- 分类的名称 -->
+      <view class="title">
+        <text class="category-name">{{catename}}</text>
+      </view>
+      <!--每种分类的表格 table begin -->
+
+      <view class="table" hidden="{{tablehidden}}" data-id="{{cateid}}" catchtap="a">
+
+        <view class="tr bg-w">
+          <view class="th-check"> </view>
+          <view class="th" hidden="true">id</view>
+          <view class="th">username</view>
+          <view class="th">password</view>
+          <view class="th">note</view>
+        </view>
+        <block wx:for="{{currentCategoryDataList}}" wx:key="id" wx:for-item="item">
+          <view class="tr bg-g" wx:if="{{index % 2 == 0}}">
+            <checkbox class="td-ckeck" data-id="{{item.id}}" checked="{{item.checked}}" value="{{item.id}}"></checkbox>
+            <view class="td" hidden="true">{{item.id}}</view>
+            <view class="td">{{item.username}}</view>
+            <view class="td">{{item.password}}</view>
+            <view class="td">{{item.note}}</view>
+          </view>
+          <view class="tr" wx:else>
+            <checkbox class="td-ckeck" data-id="{{item.id}}" checked="{{item.checked}}" value="{{item.id}}"></checkbox>
+            <view class="td" hidden="true">{{item.id}}</view>
+            <view class="td">{{item.username}}</view>
+            <view class="td">{{item.password}}</view>
+            <view class="td">{{item.note}}</view>
+          </view>
+        </block>
+
+      </view>
+      <!--每种分类的表格 table end -->
+
+    </view>
+
+
+  </template>
+  <!-- 种类列表模板 end -->
+
+  <!-- 循环输出列表 begin-->
+  <checkbox-group bindchange="checkboxChange" class="category-view">
+    <block wx:for="{{accountCategoryList}}" wx:key="cateid" wx:for-item="CateName">
+      <template is="category" data="{{...CateName}}" />
+    </block>
+  </checkbox-group>
+
+  <view class="buttons">
+    <button type="warn" bindtap="deletAccount">删除</button>
+    <button type="default">取消</button>
+  </view>
+  <!-- 循环输出列表 end -->
+
+
+
+</view>

@@ -1,0 +1,23 @@
+<!--pages/mainWindow/mainWindow.wxml-->
+<view class="container">
+  <!-- 项目列表模板 begin -->
+  <template name="items">
+    <view class="item" bindtap="navigate2ItemPage" data-id="{{id}}">
+      <view class="imgs">
+        <image src="{{img}}" class=" in-img " background-size="cover " mode="scaleToFill "></image>
+      </view>
+      <view class="infos">
+        <button type="default">{{title}}</button>
+      </view>
+    </view>
+
+
+  </template>
+  <!-- 项目列表模板 end -->
+
+  <!-- 循环输出列表 begin-->
+  <block wx:for="{{itemsList}}" wx:key="id" wx:for-item="itemName">
+    <template is="items" data="{{...itemName}}" />
+  </block>
+  <!-- 循环输出列表 end -->
+</view>

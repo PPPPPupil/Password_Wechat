@@ -1,0 +1,20 @@
+<!--pages/account/account.wxml-->
+<view class="container">
+  <!-- 功能列表模板 begin -->
+  <template name="options">
+    <view class="item" bindtap="navigate2OptionmPage" data-id="{{id}}" data-url="{{url}}">
+      <view class="infos">
+        <button type="default">{{title}}</button>
+      </view>
+    </view>
+
+
+  </template>
+  <!-- 功能列表模板 end -->
+
+  <!-- 循环输出列表 begin-->
+  <block wx:for="{{opsList}}" wx:key="id" wx:for-item="opName">
+    <template is="options" data="{{...opName}}" />
+  </block>
+  <!-- 循环输出列表 end -->
+</view>

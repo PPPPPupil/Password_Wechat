@@ -1,0 +1,4 @@
+/* pages/mainWindow/mainWindow.wxss */
+.imgs{
+  height: 10px;
+}
