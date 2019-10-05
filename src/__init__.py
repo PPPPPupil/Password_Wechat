@@ -14,4 +14,4 @@ CSRFProtect(app)
 app.config.from_object(Config)
 
 # 在app中注册视图函数
-import src.backyard.codeBook.codeBook_service
+import src.backyard.passwordBook.passwordBook_service

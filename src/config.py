@@ -1,4 +1,6 @@
 import threading
+from src.backyard.db.ConnectionPool import ConnectionPoolV1
+
 
 class Config(object):
     """
@@ -8,15 +10,8 @@ class Config(object):
     WTF_CSRF_ENABLED = False
 
     _lock = threading.RLock()
-
-
-
-    # #========================aliyun===========================
-    # # # 阿里云数据库连接池
-    # CONNECTION_POOL = ConnectionDB(ssh_host="47.94.108.28", ssh_username="root", ssh_password='Liuli1617', db_user='root', db_password='123456',
-    #                                db_name='fur_model_db', _lock = _lock)
-
-
-
-
-
+    # 数据库连接池（本地）
+    CONNECTION_POOL = ConnectionPoolV1(
+        host="127.0.0.1", port=3306, user="password_book", passwd="123456", db="passwordBook_db", charset="utf8mb4"
+        , _lock=_lock
+    )
