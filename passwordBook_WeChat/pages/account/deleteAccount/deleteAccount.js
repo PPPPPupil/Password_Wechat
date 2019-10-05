@@ -72,8 +72,7 @@ Page({
 
     ],
     //删除的id序列 默认空
-    deleteIdList:[]
-    ,
+    deleteIdList: [],
     userid: 1
 
 
@@ -89,12 +88,12 @@ Page({
     var tempaccountCategoryList = this.data.accountCategoryList;
     // console.log(tempaccountCategoryList)
     //循环找到当前cateid所对应的category 将其hidden属性设置为相反
-    for (var index in tempaccountCategoryList){
-      if (tempaccountCategoryList[index].cateid == currentCate){
+    for (var index in tempaccountCategoryList) {
+      if (tempaccountCategoryList[index].cateid == currentCate) {
         tempaccountCategoryList[index].tablehidden = !tempaccountCategoryList[index].tablehidden;
       }
     }
-    
+
     // console.log(tempaccountCategoryList)
     this.setData({
       accountCategoryList: tempaccountCategoryList
@@ -110,7 +109,9 @@ Page({
    */
   checkboxChange: function(e) {
     //每次点击都将deleteIdList置为空 再赋值
-    this.setData({deleteIdList:[]})
+    this.setData({
+      deleteIdList: []
+    })
     // 赋值
     var temp_currentCategoryDataListIndexs = e.detail.value
     console.log(temp_currentCategoryDataListIndexs)
@@ -138,14 +139,14 @@ Page({
    * 删除所有选中的checkbox对应的date（将id传回后台，后台从数据库删除）
    */
   deletAccount: function() {
-    
+
     var that = this;
-    if (that.data.deleteIdList.length == 0){
+    if (that.data.deleteIdList.length == 0) {
       wx.showToast({
         title: '请勾选要删除的内容()',
-        icon:'none'
+        icon: 'none'
       })
-    }else{
+    } else {
       console.log(that.data.deleteIdList)
       wx.showModal({
         title: '删除密码记录',
@@ -155,7 +156,7 @@ Page({
         cancelColor: 'skyblue', //取消文字的颜色
         confirmText: "是", //默认是“确定”
         confirmColor: 'skyblue', //确定文字的颜色
-        success: function (res) {
+        success: function(res) {
           if (res.cancel) {
             console.log("删除失败")
             //点击取消,默认隐藏弹框
@@ -163,7 +164,7 @@ Page({
             //点击确定
             //发送要删除的id列表
             wx.request({
-              url: 'http://127.0.0.1:5000/delete_account',
+              url: 'http://122.51.3.42:5000/delete_account',
               data: {
                 W_deleteIdList: JSON.stringify(that.data.deleteIdList)
               },
@@ -172,7 +173,7 @@ Page({
                 'content-type': 'application/x-www-form-urlencoded',
                 'chartset': 'utf-8'
               },
-              success: function (res) {
+              success: function(res) {
                 console.log(res.data);
               }
             })
@@ -184,14 +185,14 @@ Page({
 
           }
         },
-        fail: function (res) { }, //接口调用失败的回调函数
-        complete: function (res) {
+        fail: function(res) {}, //接口调用失败的回调函数
+        complete: function(res) {
           that.onLoad()
         }, //接口调用结束的回调函数（调用成功、失败都会执行）
       })
 
     }
-   
+
   },
 
   /**
@@ -201,7 +202,7 @@ Page({
     var that = this;
     // 获取当前用户的账户详细信息
     wx.request({
-      url: 'http://127.0.0.1:5000/get_account_category_list_detail',
+      url: 'http://122.51.3.42:5000/get_account_category_list_detail',
       data: {
         W_userid: JSON.stringify(this.data.userid)
       },
@@ -213,13 +214,16 @@ Page({
       },
       success: function(res) {
         console.log(res.data.return_data);
-        that.setData({
-          accountCategoryList: res.data.return_data
-        })
+        if (typeof(res.data.return_data) != undefined && typeof(res.data.return_data) != null) {
+          that.setData({
+            accountCategoryList: res.data.return_data
+          })
+        }
+
       }
     })
-    
-    
+
+
 
   },
 

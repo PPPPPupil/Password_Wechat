@@ -12,6 +12,6 @@ class Config(object):
     _lock = threading.RLock()
     # 数据库连接池（本地）
     CONNECTION_POOL = ConnectionPoolV1(
-        host="127.0.0.1", port=3306, user="password_book", passwd="123456", db="passwordBook_db", charset="utf8mb4"
+        host="127.0.0.1", port=3306, user="password_book", passwd="123456", db="passwordbook_db", charset="utf8mb4"
         , _lock=_lock
     )

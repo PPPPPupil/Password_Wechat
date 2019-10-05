@@ -7,8 +7,8 @@ Page({
   data: {
     hiddenName: true,
     userid: 1,
-    accountCategoryList: [],
-    currentCategory: "QQ",
+    accountCategoryList: ["QQ", "连接不成功"],
+    currentCategory: "点击此处选择账户种类",
     newCategory: "null",
     username: "null",
     password: "null",
@@ -31,11 +31,11 @@ Page({
       hiddenName: !this.data.hiddenName
     })
   },
-  bindPickerTap:function(){
+  bindPickerTap: function() {
     var that = this;
     // 点击时 获取当前用户的账户种类
     wx.request({
-      url: 'http://127.0.0.1:5000/get_account_category_list',
+      url: 'http://122.51.3.42:5000/get_account_category_list',
       data: {
         W_userid: JSON.stringify(this.data.userid)
       },
@@ -44,11 +44,18 @@ Page({
         'content-type': 'application/x-www-form-urlencoded',
         'chartset': 'utf-8'
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res.data.return_data);
-        that.setData({
-          accountCategoryList: res.data.return_data
-        })
+        if (typeof (res.data.return_data) != undefined && typeof (res.data.return_data) != null) {
+          that.setData({
+            accountCategoryList: res.data.return_data
+          })
+        } else {
+          wx.showToast({
+            title: '没有账户种类数据',
+            icon: 'none'
+          })
+        }        
       }
     })
   },
@@ -63,7 +70,7 @@ Page({
 
 
     wx.request({
-      url: 'http://127.0.0.1:5000/add_account_category_list',
+      url: 'http://122.51.3.42:5000/add_account_category_list',
       data: {
         W_newCategory: JSON.stringify(this.data.newCategory),
         W_userid: JSON.stringify(this.data.userid)
@@ -114,7 +121,7 @@ Page({
   ensureAdd: function() {
 
     wx.request({
-      url: 'http://127.0.0.1:5000/add_account_info',
+      url: 'http://122.51.3.42:5000/add_account_info',
       data: {
         W_accountInfo: JSON.stringify({
           categoryname: this.data.currentCategory,
@@ -151,7 +158,7 @@ Page({
     var that = this;
     // 点击时 获取当前用户的账户种类
     wx.request({
-      url: 'http://127.0.0.1:5000/get_account_category_list',
+      url: 'http://122.51.3.42:5000/get_account_category_list',
       data: {
         W_userid: JSON.stringify(this.data.userid)
       },
@@ -160,11 +167,18 @@ Page({
         'content-type': 'application/x-www-form-urlencoded',
         'chartset': 'utf-8'
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res.data.return_data);
-        that.setData({
-          accountCategoryList: res.data.return_data
-        })
+        if (typeof (res.data.return_data) != undefined && typeof (res.data.return_data) != null) {
+          that.setData({
+            accountCategoryList: res.data.return_data
+          })
+        } else {
+          wx.showToast({
+            title: '没有账户种类数据',
+            icon: 'none'
+          })
+        }
       }
     })
 

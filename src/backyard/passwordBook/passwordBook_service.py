@@ -121,3 +121,13 @@ def delete_account():
         "success": True,
         "return_data": "账户信息删除成功"
     })
+
+@app.route("/for_testing", methods=["GET"])
+def for_testing():
+    """从account表中删除当前用户传来的的账户信息（基于id）"""
+
+
+    return jsonify({
+        "success": True,
+        "return_data": "连接成功"
+    })

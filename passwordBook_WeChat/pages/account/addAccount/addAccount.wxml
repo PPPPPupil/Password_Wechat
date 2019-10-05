@@ -16,16 +16,16 @@
   <view class="info">
     <view class="input-info">
       <label>username:</label>
-      <input class="input-username" placeholder="请输入用户名" focus="true" bindinput="bindUsernameInput"></input>
+      <input class="input-username" placeholder="请输入用户名"  bindinput="bindUsernameInput"></input>
 
     </view>
     <view class="input-info">
       <label>password:</label>
-      <input class="input-password" placeholder="请输入密码" focus="true" bindinput="bindPasswordInput"></input>
+      <input class="input-password" placeholder="请输入密码"  bindinput="bindPasswordInput"></input>
     </view>
     <view class="input-info">
       <label>note:</label>
-      <input class="input-note" placeholder="备注" focus="true" bindinput="bindNoteInput"></input>
+      <input class="input-note" placeholder="备注"  bindinput="bindNoteInput"></input>
     </view>
   </view>
   <view class="last-buttons">
