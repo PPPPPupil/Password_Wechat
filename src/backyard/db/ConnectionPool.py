@@ -81,6 +81,7 @@ class ConnectionPoolV1(object):
         #     self.cur.execute(sql, arg_tuple)
         self._lock.acquire()
         self.cur.execute(sql, arg_tuple)
+        self.conn.commit()
         self._lock.release()
         return self.cur.fetchall()
 
@@ -95,6 +96,7 @@ class ConnectionPoolV1(object):
         #     self.cur.execute(sql, arg_tuple)
         self._lock.acquire()
         self.cur.execute(sql, arg_tuple)
+        self.conn.commit()
         self._lock.release()
         return self.cur.fetchone()
 
